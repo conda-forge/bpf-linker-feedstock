@@ -13,17 +13,19 @@ source:
   sha256: 90e53daa07e0f047a0ef91042a69417d0b0fa961ce9a6afe1d8fbf9f0f048fc1
 
 build:
+  number: 1
   # this (somewhat surprisingly) works on `osx-64`, but (not unsurprisingly) fails on `win-64`:
   #
   #   error[E0433]: failed to resolve: could not find `unix` in `os`
   #
   skip: win
-  number: 0
   script:
-    - export CARGO_PROFILE_RELEASE_STRIP=symbols
-    - export CARGO_PROFILE_RELEASE_LTO=fat
-    - cargo install --no-track --locked --path=. --profile=release --root="${{ PREFIX }}"
-    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    env:
+      CARGO_PROFILE_RELEASE_LTO: fat
+      CARGO_PROFILE_RELEASE_STRIP: symbols
+    content:
+      - cargo install --no-track --locked --path=. --profile=release --root="${{ PREFIX }}"
+      - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 requirements:
   build:
@@ -36,11 +38,10 @@ requirements:
   run:
     - llvmdev
 
-
 tests:
   - script:
-    - bpf-linker --version
-    - bpf-linker --help
+      - bpf-linker --version
+      - bpf-linker --help
 
 about:
   license: Apache-2.0 OR MIT
