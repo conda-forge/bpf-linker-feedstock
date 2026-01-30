@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "0.9.15"
+  version: "0.10.0"
 
 package:
   name: bpf-linker
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://github.com/aya-rs/bpf-linker/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 90e53daa07e0f047a0ef91042a69417d0b0fa961ce9a6afe1d8fbf9f0f048fc1
+  sha256: b803fec30431aeb3b4e9866e0bf8eb283a77966cbe155a275075825c8ad227d0
 
 build:
-  number: 1
+  number: 0
   # this (somewhat surprisingly) works on `osx-64`, but (not unsurprisingly) fails on `win-64`:
   #
   #   error[E0433]: failed to resolve: could not find `unix` in `os`
