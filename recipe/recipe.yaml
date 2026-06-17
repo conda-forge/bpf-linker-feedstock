@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "0.10.3"
+  version: "0.10.4"
 
 package:
   name: bpf-linker
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/aya-rs/bpf-linker/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 74419c3cf8229ad17ecb84c7f4659081ab6ede03ec4840384ba4cfe1aadda28b
+  sha256: 32a5c6b3081386e7dca8765d2c7d23f9f7feed459ad135c914d8bab686168b3d
 
 build:
   number: 0
@@ -24,7 +24,7 @@ build:
       CARGO_PROFILE_RELEASE_LTO: fat
       CARGO_PROFILE_RELEASE_STRIP: symbols
     content:
-      - cargo install --no-track --locked --path=. --profile=release --root="${{ PREFIX }}"
+      - cargo auditable install --no-track --locked --path=. --profile=release --root="${{ PREFIX }}"
       - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 requirements:
@@ -33,6 +33,7 @@ requirements:
     - ${{ compiler("rust") }}
     - ${{ stdlib("c") }}
     - cargo-bundle-licenses
+    - cargo-auditable
   host:
     - llvmdev
   run:
