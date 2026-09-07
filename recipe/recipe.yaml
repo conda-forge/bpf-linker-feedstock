@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "0.11.0"
+  version: "0.11.1"
 
 package:
   name: bpf-linker
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://github.com/aya-rs/bpf-linker/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: e32948056bd2604cdcc7fb384155feaf52f05512e02f4e8a7368af48e22f30f2
+  sha256: 9e7791bb5edaab7670e15ade3cc1df549cf5f672401b52c354643e9e9d6de31c
 
 build:
   number: 0
