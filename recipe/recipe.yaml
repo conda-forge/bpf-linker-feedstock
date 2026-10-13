@@ -45,7 +45,7 @@ tests:
       bin:
         - bpf-linker
   - script:
-      - bpf-linker --version
+      - bpf-linker --version | grep -iE "^bpf-linker ${{ version | replace('.', '\\.') }}$"
       - bpf-linker --help
 
 about:
