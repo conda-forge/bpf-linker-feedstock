@@ -36,6 +36,9 @@ requirements:
     - cargo-auditable
   host:
     - llvmdev
+    - if: linux
+      then:
+        - libllvm23
   run:
     - llvmdev
 
